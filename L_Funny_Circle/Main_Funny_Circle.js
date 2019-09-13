@@ -24,6 +24,7 @@ function CreateCircle() {
     let y = Math.random() * (window.innerHeight - radius);
     let circle = new Circle(x, y, radius);
 
+    ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
     ctx.beginPath();
     ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI);
     ctx.fillStyle = color;
@@ -33,12 +34,4 @@ function CreateCircle() {
 
 let n = 1;
 
-function action() {
-    for (let i = n; i > 0; i--) {
-        CreateCircle();
-        setTimeout(action, 500)
-
-    }
-
-}
-action();
+setInterval(CreateCircle, 500);

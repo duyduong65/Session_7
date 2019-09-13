@@ -16,13 +16,20 @@ let Rectangle = function (height, width) {
         return this.width * this.height;
     }
 };
+let height = Number(prompt("nhập vào chiều dài: "));
+let width = Number(prompt("Nhập vào chiều rộng: "));
+let x = Math.floor(Math.random()*window.innerHeight);
+let y = Math.floor(Math.random()*window.innerWidth);
 
 function drawSquare() {
-    let  ctx = document.getElementById("MyCanvas").getContext("2d");
-    let square = new Rectangle(20,40);
+    let ctx = document.getElementById("MyCanvas").getContext("2d");
+    let square = new Rectangle(height, width);
     ctx.beginPath();
-    ctx.rect(500,333,square.height,square.width);
+    ctx.rect(x, y, square.height, square.width);
     ctx.fillStyle = "red"
     ctx.fill();
+    alert("Chu vi hình chữ nhật: " + square.getPerimeter());
+    alert("diện tích hình chữ nhật là: " + square.getAcreage());
 }
+
 drawSquare();
