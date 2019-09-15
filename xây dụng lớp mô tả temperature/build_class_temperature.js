@@ -5,12 +5,14 @@ let Temperature = function (celsius) {
         return this.celsius;
     };
     this.getConvertToF = function () {
-        return (this.getCelsius * 1.8) + 32;
+        return this.celsius * 1.8 + 32;
     };
     this.getConvertToK = function () {
-        return this.getCelsius + 273.15;
+        return this.celsius + 273.15;
     };
 };
 let temp = new Temperature(25);
-
-alert(`${temp.getConvertToF()}`);
+let F = temp.getConvertToF();
+let K = temp.getConvertToK();
+alert(`${temp.getCelsius()} độ C = ${F} độ F`);
+alert(`${temp.getCelsius()} độ K = ${K} độ K`);
