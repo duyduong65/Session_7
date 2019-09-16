@@ -1,91 +1,85 @@
-let Mobile = function (inbox, sent, draft) {
+let Mobile = function (name) {
+    this.name = name;
+    this.battery = 100;
+    this.inbox = [];
+    this.outbox = [];
+    this.msg = "";
 
-
-    this.inbox = inbox;
-    this.sent = sent;
-    this.draft = draft;
-
-    this.getInbox = function () {
-        return this.inbox;
+    this.writeMsg = function (value) {
+        this.msg = value;
     };
-    this.getSent = function () {
-        return this.sent;
+    this.receiveMsg = function (msg, name) {
+        this.inbox.push(msg);
     };
-
-    this.getMessageNokia = function () {
-        return document.getElementById('messageNokia').value;
+    this.sendMsg = function (name) {
+        this.outbox.push(this.msg);
+        name.receiveMsg(this.msg, this.name);
     };
-    this.getMessageIphone = function () {
-        return document.getElementById('messageIphone').value;
-    };
-
-    this.getSendMessageToIphone = function () {
-        return this.getMessageNokia();
-    };
-    this.getSendMessageToNokia = function () {
-        return this.getMessageIphone();
-    };
-
 };
-let batteryNokia = 100;
-let nokia = new Mobile([], [], []);
-document.getElementById('batteryNokia').innerHTML = `Battery: ${batteryNokia} đv`;
+
+let Nokia = new Mobile("Nokia");
+document.getElementById('batteryNokia').innerHTML = `Battery: ${Nokia.battery} %`;
 
 function sentToIphone() {
-    nokia.getInbox().push(nokia.getSendMessageToIphone());
-    nokia.getSent().push(nokia.getSendMessageToIphone());
+    let msg = document.getElementById('messageNokia').value;
+    Nokia.writeMsg(msg);
+    Nokia.receiveMsg(msg, Iphone);
+    Nokia.sendMsg(Iphone);
     document.getElementById('messageNokia').value = "";
     document.getElementById('messageNokia').focus();
-    batteryNokia--;
-    document.getElementById('batteryNokia').innerHTML = `Battery: ${batteryNokia} đv`;
-}
+    Nokia.battery--;
+    document.getElementById('batteryNokia').innerHTML = `Battery: ${Nokia.battery} %`;
+
+};
 
 function showInboxIphone() {
+
     document.getElementById('showInboxIphone').innerHTML = "";
-    for (let i = 0; i < nokia.getInbox().length; i++) {
-        document.getElementById('showInboxIphone').innerHTML += `Message ${i + 1} : ${nokia.getInbox()[i]} <br>`;
+    for (let i = 0; i < Iphone.inbox.length; i++) {
+        document.getElementById('showInboxIphone').innerHTML += `Message ${i + 1} : ${Iphone.inbox[i]} <br>`;
     }
-    batteryIphone--;
-    document.getElementById('batteryIphone').innerHTML = `Battery: ${batteryIphone} đv`;
+    Iphone.battery--;
+    document.getElementById('batteryIphone').innerHTML = `Battery: ${Iphone.battery} %`;
 }
 
 function showSentIphone() {
-    document.getElementById('showSentNokia').innerHTML = "";
-    for (let i = 0; i < nokia.getInbox().length; i++) {
-        document.getElementById('showSentNokia').innerHTML += `Message ${i + 1} : ${nokia.getInbox()[i]} <br>`;
+    document.getElementById('showInboxIphone').innerHTML = "";
+    for (let i = 0; i < Iphone.inbox.length; i++) {
+        document.getElementById('showSentNokia').innerHTML += `Message ${i + 1} : ${Iphone.inbox[i]} <br>`;
     }
-    batteryNokia--;
-    document.getElementById('batteryNokia').innerHTML = `Battery: ${batteryNokia} đv`;
+    Nokia.battery--;
+    document.getElementById('batteryNokia').innerHTML = `Battery: ${Nokia.battery} %`;
 }
 
-let batteryIphone = 100;
-let iphone = new Mobile([], [], []);
-document.getElementById('batteryIphone').innerHTML = `Battery: ${batteryIphone} đv`;
+let Iphone = new Mobile("Iphone");
+document.getElementById('batteryIphone').innerHTML = `Battery: ${Iphone.battery} %`;
 
 function sentToNokia() {
-    iphone.getInbox().push(iphone.getSendMessageToNokia());
-    iphone.getSent().push(iphone.getSendMessageToNokia());
+    let msg = document.getElementById('messageIphone').value;
+    Iphone.writeMsg(msg);
+    Iphone.receiveMsg(msg, Iphone);
+    Iphone.sendMsg(Nokia);
     document.getElementById('messageIphone').value = "";
     document.getElementById('messageIphone').focus();
-    batteryIphone--;
-    document.getElementById('batteryIphone').innerHTML = `Battery: ${batteryIphone} đv`;
+    Iphone.battery--;
+    document.getElementById('batteryIphone').innerHTML = `Battery: ${Iphone.battery} %`;
 }
 
 function showInboxNokia() {
     document.getElementById('showInboxNokia').innerHTML = "";
-    for (let i = 0; i < iphone.getInbox().length; i++) {
-        document.getElementById('showInboxNokia').innerHTML += `Message ${i + 1} : ${iphone.getInbox()[i]} <br>`;
+    for (let i = 0; i < Nokia.inbox.length; i++) {
+        document.getElementById('showInboxNokia').innerHTML += `Message ${i + 1} : ${Nokia.inbox[i]} <br>`;
     }
-    batteryNokia--;
-    document.getElementById('batteryNokia').innerHTML = `Battery: ${batteryNokia} đv`;
+    Nokia.battery--;
+    document.getElementById('batteryNokia').innerHTML = `Battery: ${Nokia.battery} %`;
 }
 
 function showSentNokia() {
-    document.getElementById('showSentIphone').innerHTML = "";
-    for (let i = 0; i < iphone.getInbox().length; i++) {
-        document.getElementById('showSentIphone').innerHTML += `Message ${i + 1} : ${iphone.getInbox()[i]} <br>`;
+    document.getElementById('showInboxNokia').innerHTML = "";
+    for (let i = 0; i < Nokia.inbox.length; i++) {
+        document.getElementById('showSentIphone').innerHTML += `Message ${i + 1} : ${Nokia.inbox[i]} <br>`;
     }
-    batteryIphone--;
-    document.getElementById('batteryIphone').innerHTML = `Battery: ${batteryIphone} đv`;
+    Iphone.battery--;
+    document.getElementById('batteryIphone').innerHTML = `Battery: ${Iphone.battery} %`;
 }
 
