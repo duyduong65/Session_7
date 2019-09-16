@@ -1,5 +1,6 @@
 let Mobile = function (inbox, sent, draft) {
 
+
     this.inbox = inbox;
     this.sent = sent;
     this.draft = draft;
