@@ -4,16 +4,10 @@ let Mobile = function (battery, inbox, sent, draft) {
     this.sent = sent;
     this.draft = draft;
 
-    this.getInboxNokia = function () {
+    this.getInbox = function () {
         return this.inbox;
     };
-    this.getSentNokia = function () {
-        return this.sent;
-    };
-    this.getInboxIphone = function () {
-        return this.inbox;
-    };
-    this.getSentIphone = function () {
+    this.getSent = function () {
         return this.sent;
     };
 
@@ -42,15 +36,21 @@ let nokia = new Mobile(25, [], [], []);
 nokia.getBatteryNokia();
 
 function sentToIphone() {
-    nokia.getInboxNokia().push(nokia.getSendMessageToIphone());
-    nokia.getSentNokia().push(nokia.getSendMessageToIphone());
+    nokia.getInbox().push(nokia.getSendMessageToIphone());
+    nokia.getSent().push(nokia.getSendMessageToIphone());
     document.getElementById('messageNokia').value = "";
     document.getElementById('messageNokia').focus();
 }
 
 function showInboxIphone() {
-    for (let i = 0; i < nokia.getInboxNokia().length; i++) {
-        document.write(`Message ${i + 1} : ${nokia.getInboxNokia()[i]} <br>`);
+    for (let i = 0; i < nokia.getInbox().length; i++) {
+        document.getElementById('showInboxIphone').innerHTML += `Message ${i + 1} : ${nokia.getInbox()[i]} <br>`;
+    }
+}
+
+function showSentIphone() {
+    for (let i = 0; i < nokia.getInbox().length; i++) {
+        document.getElementById('showSentNokia').innerHTML += `Message ${i + 1} : ${nokia.getInbox()[i]} <br>`;
     }
 }
 
@@ -59,14 +59,22 @@ let iphone = new Mobile(78, [], [], []);
 iphone.getBatteryIphone();
 
 function sentToNokia() {
-    iphone.getInboxIphone().push(iphone.getSendMessageToNokia());
-    iphone.getSentIphone().push(iphone.getSendMessageToNokia());
+    iphone.getInbox().push(iphone.getSendMessageToNokia());
+    iphone.getSent().push(iphone.getSendMessageToNokia());
     document.getElementById('messageIphone').value = "";
     document.getElementById('messageIphone').focus();
 }
 
 function showInboxNokia() {
-    for (let i = 0; i < iphone.getInboxIphone().length; i++) {
-        document.write(`Message ${i + 1} : ${iphone.getInboxIphone()[i]} <br>`);
+    for (let i = 0; i < iphone.getInbox().length; i++) {
+        document.getElementById('showInboxNokia').innerHTML += `Message ${i + 1} : ${iphone.getInbox()[i]} <br>`;
     }
 }
+
+function showSentNokia() {
+    for (let i = 0; i < iphone.getInbox().length; i++) {
+        document.getElementById('showSentIphone').innerHTML += `Message ${i + 1} : ${iphone.getInbox()[i]} <br>`;
+    }
+
+}
+
