@@ -5,23 +5,49 @@
     <title>Title</title>
 </head>
 <body>
-    <fieldset>
-        <legend>Nokia</legend>
-        <table>
-            <tr>
-                <td><p id="battery"></p></td>
-            </tr>
-            <tr>
-                <td>
-                    <p id="inbox"></p>
-                </td>
-            </tr>
-        </table>
-    </fieldset>
-    <fieldset>
-        <legend>Iphone</legend>
+<fieldset>
+    <legend>Nokia</legend>
+    <table>
+        <tr>
+            <td><p id="batteryNokia"></p></td>
+        </tr>
+        <tr>
+            <td>
+                <input id="messageNokia" placeholder="Message">
+            </td>
+            <td>
+                <button type="button" onclick="sentToIphone()">send</button>
+            </td>
+            <td>
+                <button type="button" onclick="showInboxNokia()">inbox</button>
+            </td>
+            <td>
+                <button type="button" onclick="showInboxIphone()">Sent</button>
+            </td>
+        </tr>
+    </table>
+</fieldset>
+<fieldset>
+    <legend>Iphone</legend>
+    <table>
+        <tr>
+            <td><p id="batteryIphone"></p></td>
+        </tr>
+        <td>
+            <input id="messageIphone" placeholder="Message">
+        </td>
+        <td>
+            <button type="button" onclick="sentToNokia()">send</button>
+        </td>
+        <td>
+            <button type="button" onclick="showInboxIphone()">inbox</button>
+        </td>
+        <td>
+            <button type="button" onclick="showInboxNokia()">Sent</button>
+        </td>
+    </table>
 
-    </fieldset>
+</fieldset>
 </body>
 <script src="Main_build_class_Mobile.js"></script>
 </html>
