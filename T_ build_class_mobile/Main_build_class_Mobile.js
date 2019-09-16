@@ -8,7 +8,7 @@ let Mobile = function (name) {
     this.writeMsg = function (value) {
         this.msg = value;
     };
-    this.receiveMsg = function (msg, name) {
+    this.receiveMsg = function (msg) {
         this.inbox.push(msg);
     };
     this.sendMsg = function (name) {
