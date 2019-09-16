@@ -33,7 +33,7 @@ function sendToIphone() {
 function showInboxNokia() {
     document.getElementById('showInboxNokia').innerHTML = "";
     for (let i = 0;i<Nokia.inbox.length;i++){
-        document.getElementById('showInboxNokia').innerHTML += `Message ${i+1}: ${Nokia.inbox[i]} <br>`
+        document.getElementById('showInboxNokia').innerHTML += `Message ${i+1}: ${Nokia.inbox[i]} <br>`;
     }
     Nokia.battery--;
     document.getElementById('batteryNokia').innerHTML = `Battery: ${Nokia.battery} %`;
@@ -73,7 +73,7 @@ function showInboxIphone() {
 function showOutboxIphone() {
     document.getElementById('showOutboxIphone').innerHTML = "";
     for (let i = 0;i<Nokia.inbox.length;i++){
-        document.getElementById('showOutboxIphone').innerHTML += `Message ${i+1}: ${Nokia.inbox[i]} <br>`
+        document.getElementById('showOutboxIphone').innerHTML += `Message ${i+1}: ${Nokia.inbox[i]} <br>`;
     }
     Iphone.battery--;
     document.getElementById('batteryIphone').innerHTML = `Battery: ${Iphone.battery} %`;
