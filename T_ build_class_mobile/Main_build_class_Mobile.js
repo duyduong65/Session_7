@@ -60,12 +60,13 @@ iphone.getBatteryIphone();
 
 function sentToNokia() {
     iphone.getInboxIphone().push(iphone.getSendMessageToNokia());
+    iphone.getSentIphone().push(iphone.getSendMessageToNokia());
     document.getElementById('messageIphone').value = "";
     document.getElementById('messageIphone').focus();
 }
 
 function showInboxNokia() {
-    for (let i = 0; i < nokia.getInboxIphone().length; i++) {
+    for (let i = 0; i < iphone.getInboxIphone().length; i++) {
         document.write(`Message ${i + 1} : ${iphone.getInboxIphone()[i]} <br>`);
     }
 }
