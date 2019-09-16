@@ -9,20 +9,20 @@
     <legend>Nokia</legend>
     <table>
         <tr>
-            <td><p id="batteryNokia" ></p></td>
+            <td><p id="batteryNokia"></p></td>
         </tr>
         <tr>
             <td>
                 <input id="messageNokia" placeholder="Message">
             </td>
             <td>
-                <button type="button" onclick="sentToIphone()">send</button>
+                <button type="button" onclick="sendToIphone()">send</button>
             </td>
             <td>
                 <button type="button" onclick="showInboxNokia()">inbox</button>
             </td>
             <td>
-                <button type="button" onclick="showSentIphone()">Sent</button>
+                <button type="button" onclick="showOutboxNokia()">OutBox</button>
             </td>
         </tr>
         <tr>
@@ -31,7 +31,7 @@
         </tr>
         <tr>
             <td><p id="showInboxNokia"></p></td>
-            <td><p id="showSentNokia"></p></td>
+            <td><p id="showOutboxNokia"></p></td>
         </tr>
     </table>
 </fieldset>
@@ -45,13 +45,13 @@
             <input id="messageIphone" placeholder="Message">
         </td>
         <td>
-            <button type="button" onclick="sentToNokia()">send</button>
+            <button type="button" onclick="sendToNokia()">send</button>
         </td>
         <td>
             <button type="button" onclick="showInboxIphone()">inbox</button>
         </td>
         <td>
-            <button type="button" onclick="showSentNokia()">Sent</button>
+            <button type="button" onclick="showOutboxIphone()">Outbox</button>
         </td>
         <tr>
             <td><h4>Inbox</h4></td>
@@ -59,7 +59,7 @@
         </tr>
         <tr>
             <td><p id="showInboxIphone"></p></td>
-            <td><p id="showSentIphone"></p></td>
+            <td><p id="showOutboxIphone"></p></td>
         </tr>
     </table>
 

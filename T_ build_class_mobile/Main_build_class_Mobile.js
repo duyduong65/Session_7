@@ -13,39 +13,36 @@ let Mobile = function (name) {
     };
     this.sendMsg = function (name) {
         this.outbox.push(this.msg);
-        name.receiveMsg(this.msg, this.name);
+        name.receiveMsg(this.msg);
     };
 };
 
 let Nokia = new Mobile("Nokia");
 document.getElementById('batteryNokia').innerHTML = `Battery: ${Nokia.battery} %`;
 
-function sentToIphone() {
+function sendToIphone() {
     let msg = document.getElementById('messageNokia').value;
     Nokia.writeMsg(msg);
-    Nokia.receiveMsg(msg, Iphone);
     Nokia.sendMsg(Iphone);
     document.getElementById('messageNokia').value = "";
     document.getElementById('messageNokia').focus();
     Nokia.battery--;
     document.getElementById('batteryNokia').innerHTML = `Battery: ${Nokia.battery} %`;
-
 };
 
-function showInboxIphone() {
-
-    document.getElementById('showInboxIphone').innerHTML = "";
-    for (let i = 0; i < Iphone.inbox.length; i++) {
-        document.getElementById('showInboxIphone').innerHTML += `Message ${i + 1} : ${Iphone.inbox[i]} <br>`;
+function showInboxNokia() {
+    document.getElementById('showInboxNokia').innerHTML = "";
+    for (let i = 0;i<Nokia.inbox.length;i++){
+        document.getElementById('showInboxNokia').innerHTML += `Message ${i+1}: ${Nokia.inbox[i]} <br>`
     }
-    Iphone.battery--;
-    document.getElementById('batteryIphone').innerHTML = `Battery: ${Iphone.battery} %`;
+    Nokia.battery--;
+    document.getElementById('batteryNokia').innerHTML = `Battery: ${Nokia.battery} %`;
 }
 
-function showSentIphone() {
-    document.getElementById('showInboxIphone').innerHTML = "";
-    for (let i = 0; i < Iphone.inbox.length; i++) {
-        document.getElementById('showSentNokia').innerHTML += `Message ${i + 1} : ${Iphone.inbox[i]} <br>`;
+function showOutboxNokia(){
+    document.getElementById('showOutboxNokia').innerHTML = "";
+    for (let i = 0;i<Iphone.inbox.length;i++){
+        document.getElementById('showOutboxNokia').innerHTML += `Message ${i+1}: ${Iphone.inbox[i]} <br>`;
     }
     Nokia.battery--;
     document.getElementById('batteryNokia').innerHTML = `Battery: ${Nokia.battery} %`;
@@ -54,10 +51,9 @@ function showSentIphone() {
 let Iphone = new Mobile("Iphone");
 document.getElementById('batteryIphone').innerHTML = `Battery: ${Iphone.battery} %`;
 
-function sentToNokia() {
+function sendToNokia() {
     let msg = document.getElementById('messageIphone').value;
     Iphone.writeMsg(msg);
-    Iphone.receiveMsg(msg, Iphone);
     Iphone.sendMsg(Nokia);
     document.getElementById('messageIphone').value = "";
     document.getElementById('messageIphone').focus();
@@ -65,21 +61,20 @@ function sentToNokia() {
     document.getElementById('batteryIphone').innerHTML = `Battery: ${Iphone.battery} %`;
 }
 
-function showInboxNokia() {
-    document.getElementById('showInboxNokia').innerHTML = "";
-    for (let i = 0; i < Nokia.inbox.length; i++) {
-        document.getElementById('showInboxNokia').innerHTML += `Message ${i + 1} : ${Nokia.inbox[i]} <br>`;
-    }
-    Nokia.battery--;
-    document.getElementById('batteryNokia').innerHTML = `Battery: ${Nokia.battery} %`;
-}
-
-function showSentNokia() {
-    document.getElementById('showInboxNokia').innerHTML = "";
-    for (let i = 0; i < Nokia.inbox.length; i++) {
-        document.getElementById('showSentIphone').innerHTML += `Message ${i + 1} : ${Nokia.inbox[i]} <br>`;
+function showInboxIphone() {
+    document.getElementById('showInboxIphone').innerHTML = "";
+    for (let i = 0;i<Iphone.inbox.length;i++){
+        document.getElementById('showInboxIphone').innerHTML += `Message ${i+1}: ${Iphone.inbox[i]} <br>`
     }
     Iphone.battery--;
     document.getElementById('batteryIphone').innerHTML = `Battery: ${Iphone.battery} %`;
 }
 
+function showOutboxIphone() {
+    document.getElementById('showOutboxIphone').innerHTML = "";
+    for (let i = 0;i<Nokia.inbox.length;i++){
+        document.getElementById('showOutboxIphone').innerHTML += `Message ${i+1}: ${Nokia.inbox[i]} <br>`
+    }
+    Iphone.battery--;
+    document.getElementById('batteryIphone').innerHTML = `Battery: ${Iphone.battery} %`;
+}
