@@ -13,16 +13,11 @@
         </tr>
         <tr>
             <td>
-                <input id="messageNokia" placeholder="Message">
+                <input id="inputMessageNokia" oninput="Nokia.getWriter(this.value)">
+
             </td>
             <td>
-                <button type="button" onclick="sendToIphone()">send</button>
-            </td>
-            <td>
-                <button type="button" onclick="showInboxNokia()">inbox</button>
-            </td>
-            <td>
-                <button type="button" onclick="showOutboxNokia()">OutBox</button>
+                <button type="button" onclick="sendMess(Nokia,Iphone)">Send</button>
             </td>
         </tr>
         <tr>
@@ -39,20 +34,16 @@
     <legend>Iphone</legend>
     <table>
         <tr>
-            <td><p id="batteryIphone"></p></td>
+            <td><p id="batteryIphone" ></p></td>
         </tr>
-        <td>
-            <input id="messageIphone" placeholder="Message">
-        </td>
-        <td>
-            <button type="button" onclick="sendToNokia()">send</button>
-        </td>
-        <td>
-            <button type="button" onclick="showInboxIphone()">inbox</button>
-        </td>
-        <td>
-            <button type="button" onclick="showOutboxIphone()">Outbox</button>
-        </td>
+        <tr>
+            <td><input id="inputMessageIphone" oninput="Iphone.getWriter(this.value)"></td>
+            <td>
+                <button type="button" onclick="sendMess(Iphone,Nokia)">Send</button>
+            </td>
+        </tr>
+
+
         <tr>
             <td><h4>Inbox</h4></td>
             <td><h4>Sent</h4></td>
